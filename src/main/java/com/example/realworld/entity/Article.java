@@ -17,6 +17,7 @@ public class Article extends BaseDateTime {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "article_id")
     private Long id;
 
     @Column
