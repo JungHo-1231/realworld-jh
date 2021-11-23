@@ -21,7 +21,4 @@ public class User extends BaseDateTime {
 
     private String password;
 
-
-
-
 }

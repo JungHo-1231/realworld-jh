@@ -5,10 +5,7 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 
 
 @Entity
@@ -21,6 +18,15 @@ public class Comment extends BaseDateTime {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    // todo 하나의 유저가 여러개의 코멘트를 달 수 있으니깐 1(user):N(comments)?
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "user_id")
+    private User user;
 
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "article_id")
+    private Article article;
+
+    private String comment;
 }
 
